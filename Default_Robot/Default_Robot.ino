@@ -118,6 +118,9 @@ void loop() {
     printer.printValue(7,motor_driver.printState());
     printer.printValue(8,imu.printRollPitchHeading());        
     printer.printValue(9,imu.printAccels());
+
+    printer.printValue(11,button_sampler.printState()); // JESSICA (press button1 to test response)
+    // printer.printValue(12, .printState());
     printer.printToSerial();  // To stop printing, just comment this line out
   }
 

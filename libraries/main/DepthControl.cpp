@@ -40,12 +40,13 @@ void DepthControl::dive(z_state_t * state, int currentTime_in) {
   //Kp changed to 80 from default 0 in DepthControl
   uV = Kp*depth_error;
   //Bound the vertical control effort between -200 and 200. These are empirical values that work well for most situations
-  if(uV >200.0){
-    uV = 200.0;
-  }
-  if(uV<-200.0){
-    uV = -200.0;
-  }
+  // if(uV >200.0){
+  //   uV = 200.0;
+  // }
+  // if(uV<-200.0){
+  //   uV = -200.0;
+  // }
+  uV = min(200, max(-200,uV));
 
 
   //////////////////////////////////////////////////////////////////////
@@ -71,7 +72,7 @@ void DepthControl::surface(z_state_t * state) {
   }
   else { // not at surface yet
     atSurface = 0;
-    uV = -30; // go upward
+    uV = -250; // go upward
   }
   printer.printMessage(surfaceMessage,smTime);
 }
