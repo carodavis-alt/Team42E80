@@ -130,9 +130,16 @@ void loop() {
     motor_driver.drive(surface_control.uL,surface_control.uR,0);
   }
 
-  if ( currentTime-adc.lastExecutionTime > LOOP_PERIOD ) {
+  if (currentTime - adc.lastExecutionTime >= LOOP_PERIOD) {
     adc.lastExecutionTime = currentTime;
-    adc.updateSample(); 
+
+    adc.updateSample();
+
+    float therm_voltage = adc.sample[1] * (3.3 / 1023.0);
+    float uv_voltage    = adc.sample[2] * (3.3 / 1023.0);
+
+    printer.printValue(10, "Therm V: " + String(therm_voltage, 3));
+    printer.printValue(12, "UV V: " + String(uv_voltage, 3));
   }
 
   if ( currentTime-ef.lastExecutionTime > LOOP_PERIOD ) {

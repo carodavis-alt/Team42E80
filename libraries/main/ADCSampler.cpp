@@ -4,9 +4,10 @@
 extern Printer printer;
 
 ADCSampler::ADCSampler(void) 
-  : DataSource("Current_Sense,A00,A01,A02,A03,A10,A11,A12,A13",
-               "int,int,int,int,int,int,int,int,int") // from DataSource
-{}
+  : DataSource("Current_Sense,Thermistor,UV,Pressure,A03,A10,A11,A12,A13",
+               "int,int,int,int,int,int,int,int,int")
+{} // added to sample thermistor, uv and presssure
+
 
 void ADCSampler::init(void)
 {

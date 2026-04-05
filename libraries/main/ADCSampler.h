@@ -30,8 +30,8 @@ public:
   int lastExecutionTime = -1;
 
 private:
-
-  const int pinMap[NUM_PINS] =  {21,14,15,16,17,24,25,26,27};
+//adds pins for thermistor, uv, and pressure so their values are being measured
+const int pinMap[NUM_PINS] = {21, THERMISTOR_PIN, UV_PIN, PRESSURE_PIN, 17, 24, 25, 26, 27};
 
 };
 #endif
