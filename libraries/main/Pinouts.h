@@ -39,8 +39,8 @@
 #define MIC_PIN 23
 
 // Depth Control
-#define PRESSURE_PIN 16 // Teensy pin A00
-#define THERMISTOR_PIN 14 // Thermisotor pin ( A0?)
-#define UV_PIN 15 // uv pin
+#define PRESSURE_PIN 16 // Teensy pin A2
+#define THERMISTOR_PIN 14 // Thermisotor pin ( A0)
+#define UV_PIN 15 // uv pin (A1)
 
 #endif

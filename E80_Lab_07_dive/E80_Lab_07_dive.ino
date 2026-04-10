@@ -107,7 +107,7 @@ void loop() {
   if ( currentTime-printer.lastExecutionTime > LOOP_PERIOD ) {
     printer.lastExecutionTime = currentTime;
     printer.printValue(0,adc.printSample());
-    printer.printValue(1,button_sampler.printState()); // JESSICA: THIS IS THE LINE I EDITED FOR MINI LAB, from ef to this
+    // printer.printValue(1,button_sampler.printState()); // JESSICA: THIS IS THE LINE I EDITED FOR MINI LAB, from ef to this
     printer.printValue(2,logger.printState());
     printer.printValue(3,gps.printState());   
     printer.printValue(4,xy_state_estimator.printState());  
@@ -145,9 +145,18 @@ void loop() {
     }
   }
   
-  if ( currentTime-adc.lastExecutionTime > LOOP_PERIOD ) {
+  if (currentTime - adc.lastExecutionTime >= LOOP_PERIOD) {
     adc.lastExecutionTime = currentTime;
-    adc.updateSample(); 
+
+    adc.updateSample();
+
+    float therm_voltage    = adc.sample[1] * (3.3 / 1023.0);
+    float uv_voltage       = adc.sample[2] * (3.3 / 1023.0);
+    float pressure_voltage = adc.sample[3] * (3.3 / 1023.0);
+
+    printer.printValue(1, "Therm V: " + String(therm_voltage, 3));
+    printer.printValue(11, "Pressure V: " + String(pressure_voltage, 3));
+    printer.printValue(12, "UV V: " + String(uv_voltage, 3));
   }
 
   if ( currentTime-ef.lastExecutionTime > LOOP_PERIOD ) {

@@ -6,7 +6,8 @@
 #include "DataSource.h"
 
 typedef struct {
-    float z = 0; // z position (depth) in globad frame [m]
+    float z = 0;                // z position (depth) in global frame [m]
+    float pressure_voltage = 0; // pressure sensor voltage [V]
 } z_state_t;
 
 /*
@@ -19,25 +20,20 @@ class ZStateEstimator : public DataSource
 public:
   ZStateEstimator(void);
 
-  // init
   void init(void);
 
-  // State Access
   z_state_t state;
 
   void updateState(int pressure_signal);
   String printState(void);
 
-  // from DataSource
   size_t writeDataBytes(unsigned char * buffer, size_t idx);
 
   int lastExecutionTime = -1;
 
 private:
-  // set pressure sensor calibration slope and incercept below
-  const float depthCal_slope = 0.8890746;
-  const float depthCal_intercept = -0.7441575;
-
+  const float depthCal_slope = -1.81;
+  const float depthCal_intercept = 5.74;
 };
 
 #endif
