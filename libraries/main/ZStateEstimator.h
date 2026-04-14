@@ -32,8 +32,8 @@ public:
   int lastExecutionTime = -1;
 
 private:
-  const float depthCal_slope = -1.81;
-  const float depthCal_intercept = 5.74;
+  const float depthCal_slope = -1.89;
+  const float depthCal_intercept = 5.81;
 };
 
 #endif
