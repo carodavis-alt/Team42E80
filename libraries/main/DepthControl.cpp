@@ -46,8 +46,15 @@ void DepthControl::dive(z_state_t * state, int currentTime_in) {
   // if(uV<-200.0){
   //   uV = -200.0;
   // }
-  uV = min(200, max(-200,uV));
 
+  if (delayed == 1) {
+    uV = 0;
+  }
+  else { 
+    uV = min(200, max(-200,uV));
+  }
+
+  
 
   //////////////////////////////////////////////////////////////////////
   
