@@ -76,8 +76,8 @@ void setup() {
 
   int diveDelay = 4*1000; // how long robot will stay at depth waypoint before continuing (ms)
 
-  const int num_depth_waypoints = 2; //6
-  double depth_waypoints [] = { 0.5, 1};  // 1.5,2, 2.5,3  listed as z0,z1,... etc.
+  const int num_depth_waypoints = 6; //6
+  double depth_waypoints [] = { 0.5, 1, 1.5, 2, 2.5, 3};  // 1.5,2, 2.5,3  listed as z0,z1,... etc.
   depth_control.init(num_depth_waypoints, depth_waypoints, diveDelay);
   
   xy_state_estimator.init(); 
@@ -95,7 +95,7 @@ void setup() {
   depth_control.lastExecutionTime      = loopStartTime - LOOP_PERIOD + DEPTH_CONTROL_LOOP_OFFSET;
   logger.lastExecutionTime             = loopStartTime - LOOP_PERIOD + LOGGER_LOOP_OFFSET;
 
-  delay(30000); // 60 second delay before robot begins
+  delay(60000); // 60 second delay before robot begins
 }
 
 
